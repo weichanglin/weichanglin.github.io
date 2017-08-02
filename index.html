@@ -264,6 +264,142 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/adb通过网络连接到Android设备/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lin' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/02/adb通过网络连接到Android设备/" itemprop="url">adb通过网络连接到Android设备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T17:28:57+08:00">
+                2017-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>调试Android App时候，如遇到<strong>没有USB连接线</strong>的<strong>特殊情况</strong>，可使用网络连接到Android设备</p>
+<ol>
+<li><p>将Android设备和adb主计算机连接到可以访问的WLAN网络。</p>
+</li>
+<li><p>开启任意一个模拟器。（目的使adb devices可以连接任意一个设备）</p>
+</li>
+<li><p>设置目标设备以侦听端口 5555 上的 TCP/IP 连接。</p>
+<blockquote>
+<p>adb tcpip 5555</p>
+</blockquote>
+</li>
+<li><p>断开模拟器。</p>
+</li>
+<li><p>查看Android设备的ip。</p>
+</li>
+<li><p>连接设备。</p>
+<blockquote>
+<p>adb connect device_ip</p>
+</blockquote>
+</li>
+<li><p>运行adb devices，查看可连接的设备。</p>
+</li>
+<li><p>完成，此时，可以使用Android Studio进行调试以及运行App。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/常用Git命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -548,7 +684,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
