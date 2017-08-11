@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,Cookie," />
 
 
 
@@ -93,13 +93,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lin&#39; Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="首先，创建一个可序列化的对象，实现Serializable接口，无须解释，如下 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.io.IOException;import java.io.ObjectInputStream;impor">
+<meta name="keywords" content="Android,Cookie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie持久化">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/Cookie持久化/index.html">
 <meta property="og:site_name" content="Lin&#39; Blog">
+<meta property="og:description" content="首先，创建一个可序列化的对象，实现Serializable接口，无须解释，如下 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.io.IOException;import java.io.ObjectInputStream;impor">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-11T10:21:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lin&#39; Blog">
+<meta name="twitter:title" content="Cookie持久化">
+<meta name="twitter:description" content="首先，创建一个可序列化的对象，实现Serializable接口，无须解释，如下 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.io.IOException;import java.io.ObjectInputStream;impor">
 
 
 
@@ -127,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/11/Cookie持久化/"/>
 
 
 
 
 
-  <title>Lin' Blog</title>
+  <title>Cookie持久化 | Lin' Blog</title>
   
 
 
@@ -158,9 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,9 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/11/Cookie持久化/" itemprop="url">Cookie持久化</a></h1>
+          <h1 class="post-title" itemprop="name headline">Cookie持久化</h1>
         
 
         <div class="post-meta">
@@ -330,9 +331,7 @@
       
 
       
-        
-          
-            <p>首先，创建一个可序列化的对象，实现Serializable接口，无须解释，如下</p>
+        <p>首先，创建一个可序列化的对象，实现Serializable接口，无须解释，如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</div><div class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</div><div class="line"><span class="keyword">import</span> java.io.Serializable;</div><div class="line"><span class="keyword">import</span> java.net.HttpCookie;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerializableHttpCookie</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">final</span> HttpCookie cookie;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> HttpCookie clientCookie;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SerializableHttpCookie</span><span class="params">(HttpCookie cookie)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.cookie = cookie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> HttpCookie <span class="title">getCookie</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpCookie bestCookie = cookie;</div><div class="line">        <span class="keyword">if</span> (clientCookie != <span class="keyword">null</span>) &#123;</div><div class="line">            bestCookie = clientCookie;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> bestCookie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(ObjectOutputStream out)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        out.writeObject(cookie.getName());</div><div class="line">        out.writeObject(cookie.getValue());</div><div class="line">        out.writeObject(cookie.getComment());</div><div class="line">        out.writeObject(cookie.getCommentURL());</div><div class="line">        out.writeObject(cookie.getDomain());</div><div class="line">        out.writeLong(cookie.getMaxAge());</div><div class="line">        out.writeObject(cookie.getPath());</div><div class="line">        out.writeObject(cookie.getPortlist());</div><div class="line">        out.writeInt(cookie.getVersion());</div><div class="line">        out.writeBoolean(cookie.getSecure());</div><div class="line">        out.writeBoolean(cookie.getDiscard());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</div><div class="line">        String name = (String) in.readObject();</div><div class="line">        String value = (String) in.readObject();</div><div class="line">        clientCookie = <span class="keyword">new</span> HttpCookie(name, value);</div><div class="line">        clientCookie.setComment((String) in.readObject());</div><div class="line">        clientCookie.setCommentURL((String) in.readObject());</div><div class="line">        clientCookie.setDomain((String) in.readObject());</div><div class="line">        clientCookie.setMaxAge(in.readLong());</div><div class="line">        clientCookie.setPath((String) in.readObject());</div><div class="line">        clientCookie.setPortlist((String) in.readObject());</div><div class="line">        clientCookie.setVersion(in.readInt());</div><div class="line">        clientCookie.setSecure(in.readBoolean());</div><div class="line">        clientCookie.setDiscard(in.readBoolean());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下来，创建PersistentCookieStore用来存储Cookie对象，CookieStore 是 Java API 中用来处理 HTTP 客户端的 Cookie 存储策略的类，只需要重写CookieStore，就可以将Cookie记录到客户端本地。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.SharedPreferences;</div><div class="line"><span class="keyword">import</span> android.text.TextUtils;</div><div class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</div><div class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</div><div class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</div><div class="line"><span class="keyword">import</span> java.net.CookieStore;</div><div class="line"><span class="keyword">import</span> java.net.HttpCookie;</div><div class="line"><span class="keyword">import</span> java.net.URI;</div><div class="line"><span class="keyword">import</span> java.net.URISyntaxException;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Locale;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersistentCookieStore</span> <span class="keyword">implements</span> <span class="title">CookieStore</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String COOKIE_PREFS = <span class="string">"CookiePrefsFile"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String COOKIE_NAME_PREFIX = <span class="string">"cookie_"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> HashMap&lt;String, ConcurrentHashMap&lt;String, HttpCookie&gt;&gt; cookies;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> SharedPreferences cookiePrefs;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PersistentCookieStore instance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PersistentCookieStore <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)&#123;</div><div class="line">            instance=<span class="keyword">new</span> PersistentCookieStore(<span class="string">"====Your Application===="</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   <span class="comment">/**</span></div><div class="line"><span class="comment">   	*确保PersistentCookieStore是单例，防止在程序调用中多个PersistentCookieStore对象</span></div><div class="line"><span class="comment">   	*造成已经清空的cookie不生效的问题</span></div><div class="line"><span class="comment">   	*/</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">PersistentCookieStore</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        cookiePrefs = context.getSharedPreferences(COOKIE_PREFS, <span class="number">0</span>);</div><div class="line">        cookies = <span class="keyword">new</span> HashMap&lt;String, ConcurrentHashMap&lt;String, HttpCookie&gt;&gt;();</div><div class="line">        Map&lt;String, ?&gt; prefsMap = cookiePrefs.getAll();</div><div class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, ?&gt; entry : prefsMap.entrySet()) &#123;</div><div class="line">            <span class="keyword">if</span> (((String) entry.getValue()) != <span class="keyword">null</span> &amp;&amp; !((String) entry.getValue()).startsWith(COOKIE_NAME_PREFIX)) &#123;</div><div class="line">                String[] cookieNames = TextUtils.split((String) entry.getValue(), <span class="string">","</span>);</div><div class="line">                <span class="keyword">for</span> (String name : cookieNames) &#123;</div><div class="line">                    String encodedCookie = cookiePrefs.getString(COOKIE_NAME_PREFIX + name, <span class="keyword">null</span>);</div><div class="line">                    <span class="keyword">if</span> (encodedCookie != <span class="keyword">null</span>) &#123;</div><div class="line">                        HttpCookie decodedCookie = decodeCookie(encodedCookie);</div><div class="line">                        <span class="keyword">if</span> (decodedCookie != <span class="keyword">null</span>) &#123;</div><div class="line">                            <span class="keyword">if</span> (!cookies.containsKey(entry.getKey()))</div><div class="line">                                cookies.put(entry.getKey(), <span class="keyword">new</span> ConcurrentHashMap&lt;String, HttpCookie&gt;());</div><div class="line">                            cookies.get(entry.getKey()).put(name, decodedCookie);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(URI uri, HttpCookie cookie)</span> </span>&#123;</div><div class="line">        String name = getCookieToken(uri, cookie);</div><div class="line">      </div><div class="line">        <span class="keyword">if</span> (!cookie.hasExpired()) &#123;</div><div class="line">            <span class="keyword">if</span> (!cookies.containsKey(uri.getHost()))</div><div class="line">                cookies.put(uri.getHost(), <span class="keyword">new</span> ConcurrentHashMap&lt;String, HttpCookie&gt;());</div><div class="line">            cookies.get(uri.getHost()).put(name, cookie);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (cookies.containsKey(uri.toString()))</div><div class="line">                cookies.get(uri.getHost()).remove(name);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// Save cookie into persistent store</span></div><div class="line">        SharedPreferences.Editor prefsWriter = cookiePrefs.edit();</div><div class="line">        prefsWriter.putString(uri.getHost(), TextUtils.join(<span class="string">","</span>, cookies.get(uri.getHost()).keySet()));</div><div class="line">        prefsWriter.putString(COOKIE_NAME_PREFIX + name, encodeCookie(<span class="keyword">new</span> SerializableHttpCookie(cookie)));</div><div class="line">        prefsWriter.apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getCookieToken</span><span class="params">(URI uri, HttpCookie cookie)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> cookie.getName() + cookie.getDomain();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;HttpCookie&gt; <span class="title">get</span><span class="params">(URI uri)</span> </span>&#123;</div><div class="line">        ArrayList&lt;HttpCookie&gt; ret = <span class="keyword">new</span> ArrayList&lt;HttpCookie&gt;();</div><div class="line">        <span class="keyword">if</span> (cookies.containsKey(uri.getHost()))</div><div class="line">            ret.addAll(cookies.get(uri.getHost()).values());</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        SharedPreferences.Editor prefsWriter = cookiePrefs.edit();</div><div class="line">        prefsWriter.clear();</div><div class="line">        prefsWriter.apply();</div><div class="line">        cookies.clear();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(URI uri, HttpCookie cookie)</span> </span>&#123;</div><div class="line">        String name = getCookieToken(uri, cookie);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (cookies.containsKey(uri.getHost()) &amp;&amp; cookies.get(uri.getHost()).containsKey(name)) &#123;</div><div class="line">            cookies.get(uri.getHost()).remove(name);</div><div class="line"></div><div class="line">            SharedPreferences.Editor prefsWriter = cookiePrefs.edit();</div><div class="line">            <span class="keyword">if</span> (cookiePrefs.contains(COOKIE_NAME_PREFIX + name)) &#123;</div><div class="line">                prefsWriter.remove(COOKIE_NAME_PREFIX + name);</div><div class="line">            &#125;</div><div class="line">            prefsWriter.putString(uri.getHost(), TextUtils.join(<span class="string">","</span>, cookies.get(uri.getHost()).keySet()));</div><div class="line">            prefsWriter.apply();</div><div class="line"></div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;HttpCookie&gt; <span class="title">getCookies</span><span class="params">()</span> </span>&#123;</div><div class="line">        ArrayList&lt;HttpCookie&gt; ret = <span class="keyword">new</span> ArrayList&lt;HttpCookie&gt;();</div><div class="line">        <span class="keyword">for</span> (String key : cookies.keySet())</div><div class="line">            ret.addAll(cookies.get(key).values());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;URI&gt; <span class="title">getURIs</span><span class="params">()</span> </span>&#123;</div><div class="line">        ArrayList&lt;URI&gt; ret = <span class="keyword">new</span> ArrayList&lt;URI&gt;();</div><div class="line">        <span class="keyword">for</span> (String key : cookies.keySet())</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                ret.add(<span class="keyword">new</span> URI(key));</div><div class="line">            &#125; <span class="keyword">catch</span> (URISyntaxException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">encodeCookie</span><span class="params">(SerializableHttpCookie cookie)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (cookie == <span class="keyword">null</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        ByteArrayOutputStream os = <span class="keyword">new</span> ByteArrayOutputStream();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ObjectOutputStream outputStream = <span class="keyword">new</span> ObjectOutputStream(os);</div><div class="line">            outputStream.writeObject(cookie);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> byteArrayToHexString(os.toByteArray());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Returns cookie decoded from cookie string</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> cookieString string of cookie as returned from http request</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> decoded cookie or null if exception occured</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> HttpCookie <span class="title">decodeCookie</span><span class="params">(String cookieString)</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] bytes = hexStringToByteArray(cookieString);</div><div class="line">        ByteArrayInputStream byteArrayInputStream = <span class="keyword">new</span> ByteArrayInputStream(bytes);</div><div class="line">        HttpCookie cookie = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(byteArrayInputStream);</div><div class="line">            cookie = ((SerializableHttpCookie) objectInputStream.readObject()).getCookie();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> cookie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Using some super basic byte array &amp;lt;-&amp;gt; hex conversions so we don't have to rely on any</span></div><div class="line"><span class="comment">     * large Base64 libraries. Can be overridden if you like!</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> bytes byte array to be converted</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> string containing hex values</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">byteArrayToHexString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(bytes.length * <span class="number">2</span>);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">byte</span> element : bytes) &#123;</div><div class="line">            <span class="keyword">int</span> v = element &amp; <span class="number">0xff</span>;</div><div class="line">            <span class="keyword">if</span> (v &lt; <span class="number">16</span>) &#123;</div><div class="line">                sb.append(<span class="string">'0'</span>);</div><div class="line">            &#125;</div><div class="line">            sb.append(Integer.toHexString(v));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString().toUpperCase(Locale.US);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * Converts hex values from strings to byte arra</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> hexString string of hex-encoded values</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> decoded byte array</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">byte</span>[] hexStringToByteArray(String hexString) &#123;</div><div class="line">        <span class="keyword">int</span> len = hexString.length();</div><div class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[len / <span class="number">2</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i += <span class="number">2</span>) &#123;</div><div class="line">            data[i / <span class="number">2</span>] = (<span class="keyword">byte</span>) ((Character.digit(hexString.charAt(i), <span class="number">16</span>) &lt;&lt; <span class="number">4</span>) + Character.digit(hexString.charAt(i + <span class="number">1</span>), <span class="number">16</span>));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -349,425 +348,74 @@
 <p>webView.getSettings().setJavaScriptEnabled(true);  </p>
 <p>两行代码后面追加setCookie函数调用。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/adb通过网络连接到Android设备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lin' Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/02/adb通过网络连接到Android设备/" itemprop="url">adb通过网络连接到Android设备</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T17:28:57+08:00">
-                2017-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
-            
+            <a href="/tags/Cookie/" rel="tag"># Cookie</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>调试Android App时候，如遇到<strong>没有USB连接线</strong>的<strong>特殊情况</strong>，可使用网络连接到Android设备</p>
-<ol>
-<li><p>将Android设备和adb主计算机连接到可以访问的WLAN网络。</p>
-</li>
-<li><p>开启任意一个模拟器。（目的使adb devices可以连接任意一个设备）</p>
-</li>
-<li><p>设置目标设备以侦听端口 5555 上的 TCP/IP 连接。</p>
-<blockquote>
-<p>adb tcpip 5555</p>
-</blockquote>
-</li>
-<li><p>断开模拟器。</p>
-</li>
-<li><p>查看Android设备的ip。</p>
-</li>
-<li><p>连接设备。</p>
-<blockquote>
-<p>adb connect device_ip</p>
-</blockquote>
-</li>
-<li><p>运行adb devices，查看可连接的设备。</p>
-</li>
-<li><p>完成，此时，可以使用Android Studio进行调试以及运行App。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/常用Git命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lin' Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/02/常用Git命令/" itemprop="url">常用Git命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T15:02:41+08:00">
-                2017-08-02
-              </time>
+              <a href="/2017/08/02/adb通过网络连接到Android设备/" rel="next" title="adb通过网络连接到Android设备">
+                <i class="fa fa-chevron-left"></i> adb通过网络连接到Android设备
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>常规Git命令流程如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m &apos;&#123;meaasge&#125;&apos;</div><div class="line"></div><div class="line">git pull</div><div class="line"></div><div class="line">如果有需要同步的文件，则运行代码，保证没有冲突，然后｛</div><div class="line"></div><div class="line">	git add .</div><div class="line"></div><div class="line">	git commit -m &apos;syn&apos;</div><div class="line"></div><div class="line">	git pull</div><div class="line"></div><div class="line">	git push</div><div class="line"></div><div class="line">｝</div><div class="line"></div><div class="line">否则｛</div><div class="line"></div><div class="line">	直接git push</div><div class="line"></div><div class="line">｝</div></pre></td></tr></table></figure></p>
-<p><strong>Git忽略规则及-gitignore规则不生效的解决办法</strong></p>
-<p>在git提交文件时，有时候会忽略一些自动生成的临时文件。通常可以修改根目录中的.gitignore,相应匹配如下</p>
-<blockquote>
-<p>build/ 忽略根目录下的build文件夹 </p>
-<p>*.apk 忽略apk文件 </p>
-<p>local.properties 忽略当前目录的local.properties </p>
-<p>!.gitignore 不忽略.gitignore文件</p>
-</blockquote>
-<h3 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h3><p>实际工作中，很多时候把某些文件纳入版本管理中之后，才发现无需提交该文件到服务器，此时直接修改.gitignore文件无效，需要先把本地缓存清除，将文件改成未track状态，然后重新提交，具体代码如下</p>
-<p>​<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m &apos;update .gitignore&apos;</div><div class="line">​</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/使用adb命令查看当前Activity/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lin' Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/02/使用adb命令查看当前Activity/" itemprop="url">使用adb命令查看当前Activity</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T14:22:15+08:00">
-                2017-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    通常情况下，我们调试app的时候，按照界面点击一步一步的追踪代码，这样对于深层次的Activity很复杂，耗时太久，adb提供一个命令，可以快速追踪程序当前运行的界面</p>
-<blockquote>
-<p>adb shell dumpsys activity | grep “mFocusedActivity”</p>
-</blockquote>
-<p>​    </p>
-<p>​    这里解释下这个命令</p>
-<blockquote>
-<p>dumpsys activity</p>
-<p>用来查看task任务栈中的activity</p>
-<p>“command 1 | command 2”<br>是把第一个命令command 1执行的结果作为command 2的输入传给command 2</p>
-<p>grep</p>
-<p>grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来</p>
-</blockquote>
-<p><strong>注意 : find用来查找文件，grep用来匹配文件内容</strong></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -775,6 +423,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -962,10 +614,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
