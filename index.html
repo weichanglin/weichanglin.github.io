@@ -264,6 +264,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/使用Git对多个项目统一管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lin' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/17/使用Git对多个项目统一管理/" itemprop="url">使用Git对多个项目统一管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T16:11:58+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>手里有多个项目，项目中用到的公共类库一样，但是每次都要新建项目，并且将所有类库依次导入，耗时耗力。</p>
+<p> Git可以对所有项目统一管理，而不影响各项目工作进度：</p>
+<p>首先要有一个大的库（此处我们用testCommon文件夹模拟），里面包含公共类库（Common.java）以及各项目的主Module（项目1的主Module用app1.java表示，项目2的主Module用app2.java表示），模拟里面内容如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">common.java<span class="comment">//共用类库</span></div><div class="line">app1.java<span class="comment">//项目1私有类</span></div><div class="line">app2.java<span class="comment">//项目2私有类</span></div></pre></td></tr></table></figure>
+<p>然后，使用如下命令将提交到testCommon</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin https:<span class="comment">//git.coding.net/chim/testCommon.git</span></div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'syn'</span></div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>其次，基于原分支创建一个独立分支，这是我们众多项目中的其中一个orphanapp1。如果有必要，则git rm移除，并rm命令本地移除相关文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout --orphan orphanapp1</div><div class="line">git status</div><div class="line">git rm -r --cached app2.java</div><div class="line">rm app2.java</div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<p>移除成功之后需要提交一次，否则git branch无法查看到分支，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git remote add app1 https:<span class="comment">//git.coding.net/chim/testApp1.git</span></div><div class="line">git push app1 orphanapp1</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'syn'</span></div><div class="line">git push app1 orphanapp1</div></pre></td></tr></table></figure>
+<p><strong>其他</strong></p>
+<p>因为处于不同的分支，对于公共类库来说，orphanapp1项目的common.java文件修改，公共类库的common.java不变，此时，切换到testCommon项目，并运行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git cherry-pick &lt;commit id&gt;</div></pre></td></tr></table></figure>
+<p>然后提交到testCommon项目库即可。</p>
+<p>参考：<a href="http://www.cnblogs.com/huangtailang/p/4748075.html" target="_blank" rel="external">http://www.cnblogs.com/huangtailang/p/4748075.html</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/No-resource-found-that-matches-the-given-name-attr/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -934,7 +1061,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

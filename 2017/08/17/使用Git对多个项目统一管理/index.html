@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,调试,ADB," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="​    通常情况下，我们调试app的时候，按照界面点击一步一步的追踪代码，这样对于深层次的Activity很复杂，耗时太久，adb提供一个命令，可以快速追踪程序当前运行的界面  adb shell dumpsys activity | grep “mFocusedActivity”  ​     ​    这里解释下这个命令  dumpsys activity 用来查看task任务栈中的acti">
-<meta name="keywords" content="Android,调试,ADB">
+<meta name="description" content="手里有多个项目，项目中用到的公共类库一样，但是每次都要新建项目，并且将所有类库依次导入，耗时耗力。  Git可以对所有项目统一管理，而不影响各项目工作进度： 首先要有一个大的库（此处我们用testCommon文件夹模拟），里面包含公共类库（Common.java）以及各项目的主Module（项目1的主Module用app1.java表示，项目2的主Module用app2.java表示），模拟里面内">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用adb命令查看当前Activity">
-<meta property="og:url" content="http://yoursite.com/2017/08/02/使用adb命令查看当前Activity/index.html">
+<meta property="og:title" content="使用Git对多个项目统一管理">
+<meta property="og:url" content="http://yoursite.com/2017/08/17/使用Git对多个项目统一管理/index.html">
 <meta property="og:site_name" content="Lin&#39; Blog">
-<meta property="og:description" content="​    通常情况下，我们调试app的时候，按照界面点击一步一步的追踪代码，这样对于深层次的Activity很复杂，耗时太久，adb提供一个命令，可以快速追踪程序当前运行的界面  adb shell dumpsys activity | grep “mFocusedActivity”  ​     ​    这里解释下这个命令  dumpsys activity 用来查看task任务栈中的acti">
+<meta property="og:description" content="手里有多个项目，项目中用到的公共类库一样，但是每次都要新建项目，并且将所有类库依次导入，耗时耗力。  Git可以对所有项目统一管理，而不影响各项目工作进度： 首先要有一个大的库（此处我们用testCommon文件夹模拟），里面包含公共类库（Common.java）以及各项目的主Module（项目1的主Module用app1.java表示，项目2的主Module用app2.java表示），模拟里面内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-02T07:31:15.000Z">
+<meta property="og:updated_time" content="2017-08-17T08:13:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用adb命令查看当前Activity">
-<meta name="twitter:description" content="​    通常情况下，我们调试app的时候，按照界面点击一步一步的追踪代码，这样对于深层次的Activity很复杂，耗时太久，adb提供一个命令，可以快速追踪程序当前运行的界面  adb shell dumpsys activity | grep “mFocusedActivity”  ​     ​    这里解释下这个命令  dumpsys activity 用来查看task任务栈中的acti">
+<meta name="twitter:title" content="使用Git对多个项目统一管理">
+<meta name="twitter:description" content="手里有多个项目，项目中用到的公共类库一样，但是每次都要新建项目，并且将所有类库依次导入，耗时耗力。  Git可以对所有项目统一管理，而不影响各项目工作进度： 首先要有一个大的库（此处我们用testCommon文件夹模拟），里面包含公共类库（Common.java）以及各项目的主Module（项目1的主Module用app1.java表示，项目2的主Module用app2.java表示），模拟里面内">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/02/使用adb命令查看当前Activity/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/17/使用Git对多个项目统一管理/"/>
 
 
 
 
 
-  <title>使用adb命令查看当前Activity | Lin' Blog</title>
+  <title>使用Git对多个项目统一管理 | Lin' Blog</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/02/使用adb命令查看当前Activity/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/使用Git对多个项目统一管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lin">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用adb命令查看当前Activity</h1>
+          <h1 class="post-title" itemprop="name headline">使用Git对多个项目统一管理</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T14:22:15+08:00">
-                2017-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T16:11:58+08:00">
+                2017-08-17
               </time>
             
 
@@ -331,20 +331,22 @@
       
 
       
-        <p>​    通常情况下，我们调试app的时候，按照界面点击一步一步的追踪代码，这样对于深层次的Activity很复杂，耗时太久，adb提供一个命令，可以快速追踪程序当前运行的界面</p>
-<blockquote>
-<p>adb shell dumpsys activity | grep “mFocusedActivity”</p>
-</blockquote>
-<p>​    </p>
-<p>​    这里解释下这个命令</p>
-<blockquote>
-<p>dumpsys activity</p>
-<p>用来查看task任务栈中的activity</p>
-<p>“command 1 | command 2”<br>是把第一个命令command 1执行的结果作为command 2的输入传给command 2</p>
-<p>grep</p>
-<p>grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来</p>
-</blockquote>
-<p><strong>注意 : find用来查找文件，grep用来匹配文件内容</strong></p>
+        <p>手里有多个项目，项目中用到的公共类库一样，但是每次都要新建项目，并且将所有类库依次导入，耗时耗力。</p>
+<p> Git可以对所有项目统一管理，而不影响各项目工作进度：</p>
+<p>首先要有一个大的库（此处我们用testCommon文件夹模拟），里面包含公共类库（Common.java）以及各项目的主Module（项目1的主Module用app1.java表示，项目2的主Module用app2.java表示），模拟里面内容如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">common.java<span class="comment">//共用类库</span></div><div class="line">app1.java<span class="comment">//项目1私有类</span></div><div class="line">app2.java<span class="comment">//项目2私有类</span></div></pre></td></tr></table></figure>
+<p>然后，使用如下命令将提交到testCommon</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin https:<span class="comment">//git.coding.net/chim/testCommon.git</span></div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'syn'</span></div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>其次，基于原分支创建一个独立分支，这是我们众多项目中的其中一个orphanapp1。如果有必要，则git rm移除，并rm命令本地移除相关文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git checkout --orphan orphanapp1</div><div class="line">git status</div><div class="line">git rm -r --cached app2.java</div><div class="line">rm app2.java</div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<p>移除成功之后需要提交一次，否则git branch无法查看到分支，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git remote add app1 https:<span class="comment">//git.coding.net/chim/testApp1.git</span></div><div class="line">git push app1 orphanapp1</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'syn'</span></div><div class="line">git push app1 orphanapp1</div></pre></td></tr></table></figure>
+<p><strong>其他</strong></p>
+<p>因为处于不同的分支，对于公共类库来说，orphanapp1项目的common.java文件修改，公共类库的common.java不变，此时，切换到testCommon项目，并运行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git cherry-pick &lt;commit id&gt;</div></pre></td></tr></table></figure>
+<p>然后提交到testCommon项目库即可。</p>
+<p>参考：<a href="http://www.cnblogs.com/huangtailang/p/4748075.html" target="_blank" rel="external">http://www.cnblogs.com/huangtailang/p/4748075.html</a></p>
 
       
     </div>
@@ -374,11 +376,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/调试/" rel="tag"># 调试</a>
-          
-            <a href="/tags/ADB/" rel="tag"># ADB</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
         </div>
       
@@ -391,15 +389,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/17/No-resource-found-that-matches-the-given-name-attr/" rel="next" title="No resource found that matches the given name: attr">
+                <i class="fa fa-chevron-left"></i> No resource found that matches the given name: attr
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/02/常用Git命令/" rel="prev" title="常用Git命令">
-                常用Git命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
